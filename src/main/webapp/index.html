@@ -5,15 +5,30 @@
 		<script src="chat.js"></script>
 		<style>
 		.master_container {
-			width: 300px;
+			max-width: 500px;
+			height: 100%;
 			padding: 0;
 			margin: 0;
 			background-color: white;
 			border: 5px solid black;
+			overflow: hidden;
+		}
+		
+		input, form {
+			width: 90%;
+			font-size: large
+		}
+		
+		body {
+			background-attachment: fixed;
+			background-image: url(images/bg.jpg);
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
 		}
 
 		.chat_container {
-			height: 150px;
+			height: 65%;
 			padding: 20px;
 			overflow-y: scroll;
 			text-align: left;
@@ -32,9 +47,9 @@
 		
 		#chatlist-output {
 			width: 100%;
-			height: 250px;
+			height: 50%;
 			overflow-y: scroll;
-			background-color: white;
+			background-color: rgb(102, 204, 255);
 		}
 		
 		#chatlist-output button {
@@ -57,18 +72,20 @@
 <body>
 <meta charset="utf-8">
 
-<body style="background-color: grey">
+<body>
 
-<div style="margin: auto" align="center">
+<div style="margin: auto; padding: 0; overflow: hidden;" align="center">
 
-	<div id="login" style="width: 40%; height:250px; background-color: red">
-	<h1>ENTER A NAME</h1>
+	<div id="login" class="master_container">
+	<h1>WELCOME TO SEANCHAT</h1>
+	<img src="images/welcome.png" style="height:60%"></img>
+	<h2>please enter a username below:</h2>
 	<form onsubmit="return login()">
 	<input id="login-input" type="text"></input>
 	</form>
 	</div>
 	
-	<div id="chatlist" style="display:none; width: 40%; background-color: red;">
+	<div id="chatlist" class="master_container" style="display:none;">
 	<h2>CHOOSE A ROOM</h2>
 	<div id="chatlist-output">
 	</div>
@@ -83,8 +100,8 @@
 	<div id="chatroom-output" class="chat_container">
 	</div>
 
-	<form onsubmit="return sendMessage()">
-	<input id="chatroom-input" type="text"></input>
+	<form onsubmit="return sendMessage()" style="height: 20%">
+	<input id="chatroom-input" type="text" style="height: 100%;"></input>
 	</form>
 	</div>
 
