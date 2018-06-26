@@ -56,7 +56,7 @@ function chat(uri, username) {
 		let msg = parse(evt.data);
 		console.log(msg);
 		appendOutput(msg.data);
-		//output.scrollTop += 100;
+		output.scrollTop += 100;
 	};
 	
 	websocket.onerror = function (evt) {

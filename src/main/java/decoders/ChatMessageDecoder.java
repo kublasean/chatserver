@@ -13,8 +13,12 @@ public class ChatMessageDecoder implements Decoder.Text<ChatMessage> {
     @Override
     public ChatMessage decode(String s) {
         String[] tokens = s.split(":");
+				String contents = tokens[2];
+				for (int i=3; i<tokens.length; i++) {
+					contents += ":" + tokens[i];
+				}
 
-        return new ChatMessage(tokens[0], tokens[1], tokens[2]);
+        return new ChatMessage(tokens[0], tokens[1], contents);
     }
 
     @Override

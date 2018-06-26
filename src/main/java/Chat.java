@@ -10,6 +10,8 @@ import java.util.HashMap;
 import javax.websocket.EncodeException;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
+
+import java.util.regex.*;
  
 
 public class Chat {
@@ -30,7 +32,12 @@ public class Chat {
 	}
 	
 	public void newMessage(String name, String contents) throws IOException, EncodeException {
-		String msg = "<p>" + userspan + name + ":</span> " + contents + "</p>";
+		Pattern p = Pattern.compile("http.\\S*?[.](?:jpg|png)");
+		Matcher m = p.matcher(contents);
+		
+		contents = m.replaceAll("</p><img src=\"$0\"></img><p>");
+		
+		String msg = "<p>" + userspan + name + "</span>" + contents + "</p>";
 		notify(new ChatMessage(ChatMessage.CHAT_MESSAGE, " ", msg));
 	}
 	
